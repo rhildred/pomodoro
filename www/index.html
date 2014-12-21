@@ -1,0 +1,22 @@
+<canvas id="main" width="200" height="200" style="background:url('images/Twemoji_1f345.svg');background-size: 200px 200px"></canvas>
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/easeljs.min.js"></script>
+<script>
+
+    var app = {
+        oStage: null,
+        init: function(){
+            this.oStage = new createjs.Stage(main);
+            createjs.Ticker.addEventListener("tick", oStage);
+            createjs.Ticker.addEventListener("tick", jQuery.proxy(this.onTick, this));
+            createjs.Ticker.interval = 1000;
+            return this;
+        },
+        onTick: function(){
+
+        }
+    }.init();
+
+
+
+</script>
