@@ -1,22 +1,29 @@
-<canvas id="main" width="200" height="200" style="background:url('images/Twemoji_1f345.svg');background-size: 200px 200px"></canvas>
+<div id="main" style="background:url('images/Twemoji_1f345.svg');background-size: 200px 200px;width:200px;height:200px"></div>
 <script src="js/jquery-1.11.2.min.js"></script>
-<script src="js/easeljs.min.js"></script>
 <script>
-
+jQuery(document).ready(function(){
     var app = {
-        oStage: null,
+        nStartTime: null,
+        oInterval: null,
         init: function(){
-            this.oStage = new createjs.Stage(main);
-            createjs.Ticker.addEventListener("tick", oStage);
-            createjs.Ticker.addEventListener("tick", jQuery.proxy(this.onTick, this));
-            createjs.Ticker.interval = 1000;
+            this.nStartTime = new Date().getTime();
+            this.oInterval = setInterval(jQuery.proxy(this.onTick, this), 1000);
             return this;
         },
-        onTick: function(){
+        onTick: function(oEvent){
+            var nTimeElapsed = new Date().getTime() - this.nStartTime;
+            if(nTimeElapsed > 1000 * 10){
+                clearInterval(this.oInterval);
+                var snd = new Audio("sounds/DING.mp3");
+                snd.play();
+            }else{
+                var snd = new Audio("sounds/alarm_clock_tick.mp3");
+                snd.play();
+            }
 
         }
     }.init();
 
-
+});
 
 </script>
