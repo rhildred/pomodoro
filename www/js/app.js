@@ -29,6 +29,7 @@ require(
     function (jQuery) {
         jQuery("#accordion").accordion();
         jQuery(".green-tomato").draggable({
+            axis: "x",
             stop: function (event, ui) {
                 jQuery(this).animate({ top: 0, left: 0 }, 'slow', function(){
                     requirejs(['pomodoro'], jQuery.proxy(function(oPomodoro){
