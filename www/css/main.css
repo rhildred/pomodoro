@@ -1,0 +1,7 @@
+@import url('bootstrap.min.css');
+@import url('jquery-ui.css');
+
+#accordion h3 img{
+    height: 1.5em;
+    width:auto;
+}
